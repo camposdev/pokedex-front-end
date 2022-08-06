@@ -1,81 +1,70 @@
-# Desafio front-end React 
+# Getting Started with Create React App
 
-O intuito deste desafio é avaliar seus conhecimentos técnicos em **React**.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-O teste consiste em utilizar a API [pokeapi v2](https://pokeapi.co/docsv2/#) para construção de uma Pokédex.
+## Available Scripts
 
-Este desafio deve ser feito por você em sua casa. O tempo máximo para entrega é de **3 dias**.
+In the project directory, you can run:
 
-## Instruções de entrega do desafio
+### `yarn start`
 
-1. Primeiro, faça um fork deste projeto para a sua conta no Github (crie uma se você não possuir).
-2. Em seguida, implemente o projeto em seu clone local, como descrito abaixo.
-3. Ao finalizar o desafio, submeta um pull request e nos informe no e-mail que foi finalizado.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Requisitos
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-- O código precisa rodar em container Docker e não é necessário configurar em docker-compose, mas se estiver será um diverencial.
-- Para executar o seu código, deve ser preciso apenas rodar os seguintes comandos:
-	- git clone \$seu-fork
-	- cd \$seu-fork
-	- comando para executar o docker
-- Crie uma documentação explicando como rodar sua aplicação, teste e outras informações que você acha relevante.
+### `yarn test`
 
-## Descrição do projeto
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Com a API [pokeapi v2](https://pokeapi.co/docsv2/#), precisamos que você crie uma interface WEB para exibir as informações dos pokémons capturados.
+### `yarn build`
 
-**Sua aplicação DEVE:**
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. Ter um filtro para buscar os pokémons por nome ou número
-2. Adicionar ou capturar, como preferir, novos pokémons na Pokédex, que a princípio estará vazia
-3. Listar os pokémons que foram adicionados na Pokédex
-4. Mostrar detalhes do personagem adicionados na Pokédex, como:
-    - Nome
-    - Imagem do Pokémon
-	- Opção do usuário fazer upload de sua própria imagem, substituindo a que é entregue via API
-    - Peso
-    - Tamanho
-    - Lista de tipos
-    - Lista de habilidades
-    - Estatísticas de velocidade
-    - Defesa
-    - Ataque
-    - Hp
-    - Cada passo de sua evolução
-    - Ao clicar em um item da lista de tipos, mostrar todos os pokémons daquele mesmo tipo, inclusive os que ainda não estão adicionados na Pokédex
-    - Ao clicar em um item da lista de habilidades mostrar o `short_effect` da mesma
-5. Excluir os pokémons que foram adicionados na Pokédex
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-> **Dica**: Você encontrará as imagens dos pokémons nos blocos sprites e versions da API.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-**Sua aplicação web NÃO PRECISA:**
+### `yarn eject`
 
-1. Lidar com autenticação ou autorização (pontos extras se ela fizer)
-2. Não precisa estar hospedada em nenhum servidor
-3. Lidar com APIs que não seja a recomendada pelo teste
-4. Ser escrita usando algum framework específico (mas não há nada de errado em usá-los também, use o que achar melhor).
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Tecnologias que devem estar presentes no teste
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- React
-- Redux
-- React Testing Library
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-**Não necessário, mas se tiver será um diferencial**
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-- Redux-saga
+## Learn More
 
-## Avaliação
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Seu projeto será avaliado de acordo com os seguintes critérios:
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-1. Sua aplicação preenche os requerimentos básicos?
-2. Você documentou a maneira de configurar o ambiente e rodar sua aplicação?
-3. Você seguiu as instruções de envio do desafio?
-4. Qualidade e cobertura dos testes unitários.
-5. Ter uma aparência bonita
+### Code Splitting
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Boa sorte!
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
