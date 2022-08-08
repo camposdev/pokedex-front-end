@@ -13,10 +13,10 @@ Run `yarn docker` to up container and run in [http://localhost:3000](http://loca
 ## Development
 
 - Run `yarn` to install dependencies.
-- Run `yarn start` to start project
+- Run `yarn start` to start project.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Testing
 
-Run `yarn test` to run tests.
+Run `yarn test` to test.

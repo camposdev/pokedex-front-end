@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Header component correctly 1`] = `
+<header
+  className="sc-gsnTZi hsjWAH"
+>
+  <div
+    className="sc-bczRLJ iLKbNu sc-iBkjds dIDkJI"
+  >
+    <img
+      alt="Pokemon"
+      className="sc-dkzDqf Wrjus"
+      onClick={[Function]}
+      src="pokemon_logo.png"
+    />
+    <img
+      alt="Pokeball"
+      className="sc-hKMtZM cLvNMQ"
+      src="pokeball.svg"
+    />
+    <a
+      className="sc-gKXOVf dkfkEo"
+      onClick={[Function]}
+    >
+      <img
+        alt="Pokedex"
+        className="sc-eCYdqJ gLghPD"
+        src="pokedex.png"
+      />
+      <span
+        className="sc-jSMfEi hMdsNo"
+      >
+        <small>
+          Minha
+        </small>
+        Pokedex
+      </span>
+    </a>
+  </div>
+</header>
+`;

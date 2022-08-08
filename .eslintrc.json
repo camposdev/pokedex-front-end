@@ -21,6 +21,7 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "arrow-parens": "off"
+        "arrow-parens": "off",
+        "react/prop-types": 0
     }
 }
