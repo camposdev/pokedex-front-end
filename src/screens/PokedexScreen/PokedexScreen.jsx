@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { CardPokemon, Loading, SearchForm, TitleSection } from '../../components'
 
 const PokedexScreen = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [pokemons, setPokemons] = useState([])
   const pokedex = useSelector((state) => state.pokedex.pokemons)
   const count = pokedex?.length || 0
