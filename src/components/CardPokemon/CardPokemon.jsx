@@ -53,7 +53,9 @@ const CardPokemon = ({ data, ...props }) => {
         </S.Types>
       </S.Card>
 
-      <S.RemoveButton onClick={handleRemove}>Remover</S.RemoveButton>
+      <S.RemoveButton variant="small" onClick={handleRemove}>
+        Remover
+      </S.RemoveButton>
     </S.Wrapper>
   )
 }

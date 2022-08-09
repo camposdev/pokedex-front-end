@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { ifProp, palette, prop, theme } from 'styled-tools'
+import Button from '../Button'
 
 const S = {}
 
@@ -82,22 +83,13 @@ S.Catch = styled.img`
   }
 `
 
-S.RemoveButton = styled.button`
+S.RemoveButton = styled(Button)`
   position: absolute;
   z-index: 3;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  border: 0;
-  border-radius: 4px;
-  padding: 2px 15px;
-  background-color: ${palette('red')};
-  color: ${palette('white')};
-  font-size: 1rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
   opacity: 0;
-  cursor: pointer;
 `
 
 S.Wrapper = styled.div`

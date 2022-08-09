@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components'
 import { ifProp, palette, prop, theme } from 'styled-tools'
+import { Button } from '../../components'
 import CardPokemon from '../../components/CardPokemon'
 
 const S = {}
@@ -52,22 +53,13 @@ S.Catch = styled.img`
   }
 `
 
-S.RemoveButton = styled.button`
+S.RemoveButton = styled(Button)`
   position: absolute;
   z-index: 3;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  border: 0;
-  border-radius: 4px;
-  padding: 2px 15px;
-  background-color: ${palette('red')};
-  color: ${palette('white')};
-  font-size: 1rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
   opacity: 0;
-  cursor: pointer;
 `
 
 S.PhotoContent = styled.div`
@@ -201,20 +193,6 @@ S.TextDetail = styled.span`
 
   &:first-of-type {
     margin-left: 0;
-  }
-`
-
-S.TitleSection = styled.h2`
-  margin: 0 0 40px;
-  font-size: 4rem;
-  text-align: center;
-  font-weight: 700;
-
-  small {
-    display: block;
-    font-size: 1.6rem;
-    font-weight: 300;
-    color: ${palette('black50')};
   }
 `
 

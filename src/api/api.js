@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const baseURL = 'https://pokeapi.co/api/v2'
 
-const getPokemons = async () => {
-  const { data } = await axios.get(`${baseURL}/pokemon`)
+const getPokemons = async (url = null) => {
+  const { data } = await axios.get(url || `${baseURL}/pokemon`)
   const promisses = await data.results.map(async (pokemon) => {
     return await getPokemonByUrl(pokemon.url)
   })
 
   const results = await Promise.all(promisses)
-  return { next: data.next, count: data.count, results }
+  return { next: data.next, results }
 }
 
 const getPokemonsFromPokedex = async (pokemons) => {
@@ -70,6 +70,7 @@ const getAbilityInfo = async (url) => {
 }
 
 export {
+  getPokemonByUrl,
   getPokemons,
   getPokemonByNameOrNumber,
   getEvolutionChainBySpecies,

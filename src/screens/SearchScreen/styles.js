@@ -44,10 +44,10 @@ S.Input = styled.input`
   }
 `
 
-S.WrapCards = styled.section`
+S.FlexContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 `
 
 export default S

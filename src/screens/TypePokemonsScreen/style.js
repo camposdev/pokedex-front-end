@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import TitleSection from '../../components/TitleSection'
+import { TitleSection } from '../../components'
 
 const S = {}
 

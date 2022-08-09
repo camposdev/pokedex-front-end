@@ -9,6 +9,7 @@ import PokemonScreen from './screens/PokemonScreen'
 import SearchScreen from './screens/SearchScreen'
 import TypePokemonsScreen from './screens/TypePokemonsScreen/TypePokemonsScreen'
 import store from './store/store'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 

@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as api from '../../api/api'
 import typeColors from '../../api/typeColors'
-import Loading from '../../components/Loading'
-import { setLoading } from '../../store/loadingSlice'
+import { Loading, SearchForm, TitleSection } from '../../components'
 import pokeball from '../../assets/images/pokeball.svg'
 import arrow from '../../assets/images/arrow.png'
 import S from './styles'
 import { catchPokemon, removePokemon } from '../../store/pokedexSlice'
-import SearchForm from '../../components/SearchForm'
 
 const PokemonScreen = () => {
+  const [loading, setLoading] = useState(true)
   const [pokemon, setPokemon] = useState(null)
   const [evolutions, setEvolutions] = useState([])
   const [ability, setAbility] = useState({
@@ -20,7 +19,6 @@ const PokemonScreen = () => {
     open: false
   })
   const { name } = useParams()
-  const loading = useSelector((state) => state.loading.value)
   const pokedex = useSelector((state) => state.pokedex.pokemons)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -29,7 +27,7 @@ const PokemonScreen = () => {
 
   const fetchPokemon = async () => {
     try {
-      dispatch(setLoading(true))
+      setLoading(true)
       const fetchPokemon = await api.getPokemonByNameOrNumber(name)
       setPokemon(fetchPokemon.data)
       const fetchEvolution = await api.getEvolutionChainBySpecies(fetchPokemon.data.species.url)
@@ -37,7 +35,7 @@ const PokemonScreen = () => {
     } catch (error) {
       console.error(error)
     } finally {
-      dispatch(setLoading(false))
+      setLoading(false)
     }
   }
 
@@ -83,7 +81,9 @@ const PokemonScreen = () => {
               />
               <S.BlurEffect color={typeColors[pokemon.types[0].type.name]} />
               <S.Catch src={pokeball} alt="pokeball" title="Capturar" onClick={handleCatch} />
-              <S.RemoveButton onClick={handleRemove}>Remover da Pokedex</S.RemoveButton>
+              <S.RemoveButton variant="small" onClick={handleRemove}>
+                Remover da Pokedex
+              </S.RemoveButton>
             </S.PhotoContent>
 
             <S.Content>
@@ -166,10 +166,10 @@ const PokemonScreen = () => {
             </S.Content>
           </S.FlexContent>
 
-          <S.TitleSection>
+          <TitleSection>
             Evoluções
             {evolutions.length <= 1 && <small>Este Pokémon não evolui.</small>}
-          </S.TitleSection>
+          </TitleSection>
 
           <S.FlexContent>
             {evolutions?.map((item) => (
