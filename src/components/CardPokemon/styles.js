@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import { ifProp, palette, prop, theme } from 'styled-tools'
+import styled from 'styled-components'
+import { palette, prop, theme } from 'styled-tools'
 import Button from '../Button'
 
 const S = {}
@@ -98,30 +98,13 @@ S.Wrapper = styled.div`
   &:hover {
     ${S.Catch} {
       top: 5px;
-      opacity: ${ifProp('caught', '0.2', '1')};
-
-      ${ifProp(
-        'caught',
-        css`
-          z-index: 1;
-          cursor: default;
-          transform: scale(1);
-        `
-      )}
+      opacity: 1;
     }
 
     ${S.RemoveButton} {
       opacity: 1;
       bottom: 20px;
     }
-  }
-
-  ${S.RemoveButton} {
-    display: ${ifProp('caught', 'block', 'none')};
-  }
-
-  ${S.Catch} {
-    display: ${ifProp('caught', 'none', 'block')};
   }
 `
 

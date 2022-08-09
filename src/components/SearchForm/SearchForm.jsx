@@ -24,7 +24,7 @@ const SearchForm = () => {
       resetForm()
       dispatch(setLoading(true))
       const response = await api.getPokemonByNameOrNumber(search)
-      navigate(`../pokemon/${response.data.name}`)
+      navigate(`/pokemon/${response.data.name}`)
     } catch (error) {
       if (error.response.status === 404) {
         toast.error('Pokémon não encontrado!')

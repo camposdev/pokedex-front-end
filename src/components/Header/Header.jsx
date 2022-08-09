@@ -24,15 +24,21 @@ const Header = () => {
           <S.Github src={github} alt="Github" />
         </a>
 
-        <S.Logo src={logo} alt="Pokemon" onClick={() => navigate('/')} />
-        <S.Pokeball src={pokeball} alt="Pokeball" onClick={handleGetRandom} />
+        <S.Logo src={logo} alt="Pokemon" onClick={() => navigate('/')} data-testid="logo" />
+
+        <S.Pokeball
+          src={pokeball}
+          alt="Pokeball"
+          onClick={handleGetRandom}
+          data-testid="pokeball"
+        />
 
         <S.Pokedex onClick={() => navigate('pokedex')}>
           <S.PokedexIcon src={pokedexIcon} alt="Pokedex" />
           <S.PokedexMenu>
             <small>Minha</small>
             Pokedex
-            <S.Badge>{totalPokemons}</S.Badge>
+            <S.Badge data-testid="count-pokemons">{totalPokemons}</S.Badge>
           </S.PokedexMenu>
         </S.Pokedex>
       </S.Container>

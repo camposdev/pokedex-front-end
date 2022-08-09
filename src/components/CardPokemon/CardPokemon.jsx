@@ -30,9 +30,17 @@ const CardPokemon = ({ data, ...props }) => {
 
   return (
     <S.Wrapper caught={isCaught} {...props}>
-      <S.Catch src={pokeball} alt="pokeball" title="Capturar" onClick={handleCatch} />
+      {!isCaught && (
+        <S.Catch
+          src={pokeball}
+          alt="pokeball"
+          title="Capturar"
+          onClick={handleCatch}
+          data-testid="pokeball"
+        />
+      )}
 
-      <S.Card onClick={() => navigate(`/pokemon/${name}`)}>
+      <S.Card onClick={() => navigate(`/pokemon/${name}`)} data-testid="card">
         <S.Number color={typeColors[types[0].type.name]} data-testid="number">
           #{id.toString().padStart(3, '0')}
         </S.Number>
@@ -53,9 +61,11 @@ const CardPokemon = ({ data, ...props }) => {
         </S.Types>
       </S.Card>
 
-      <S.RemoveButton variant="small" onClick={handleRemove}>
-        Remover
-      </S.RemoveButton>
+      {isCaught && (
+        <S.RemoveButton variant="small" onClick={handleRemove} data-testid="remove-button">
+          Remover
+        </S.RemoveButton>
+      )}
     </S.Wrapper>
   )
 }
