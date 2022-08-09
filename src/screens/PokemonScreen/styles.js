@@ -46,7 +46,6 @@ S.Catch = styled.img`
   left: 0;
   transition: all 0.3s ease;
   cursor: pointer;
-  opacity: 0;
 
   &:hover {
     transform: scale(1.1);
@@ -74,9 +73,6 @@ S.PhotoContent = styled.div`
 
   &:hover {
     ${S.Catch} {
-      cursor: ${ifProp('caught', 'default', 'pointer')};
-      opacity: ${ifProp('caught', '0.2', '1')};
-
       &:hover {
         transform: scale(${ifProp('caught', '1', '1.1')});
       }
