@@ -5,6 +5,7 @@ import * as api from '../../api/api'
 import Loading from '../../components/Loading'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '../../store/loadingSlice'
+import SearchForm from '../../components/SearchForm'
 
 const SearchScreen = () => {
   const [, setNextPage] = useState('')
@@ -31,6 +32,7 @@ const SearchScreen = () => {
 
   return (
     <>
+      <SearchForm />
       {!loading && (
         <S.WrapCards>
           {pokemons?.map((item) => (

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { ifProp, palette, prop, theme } from 'styled-tools'
 import CardPokemon from '../../components/CardPokemon'
 
@@ -38,6 +38,38 @@ S.FlexContent = styled.div`
   }
 `
 
+S.Catch = styled.img`
+  position: absolute;
+  width: 60px;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
+S.RemoveButton = styled.button`
+  position: absolute;
+  z-index: 3;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 4px;
+  padding: 2px 15px;
+  background-color: ${palette('red')};
+  color: ${palette('white')};
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  opacity: 0;
+  cursor: pointer;
+`
+
 S.PhotoContent = styled.div`
   position: relative;
   z-index: 1;
@@ -46,6 +78,30 @@ S.PhotoContent = styled.div`
 
   @media (min-width: ${theme('breakpoints.md')}) {
     margin-right: 15px;
+  }
+
+  &:hover {
+    ${S.Catch} {
+      cursor: ${ifProp('caught', 'default', 'pointer')};
+      opacity: ${ifProp('caught', '0.2', '1')};
+
+      &:hover {
+        transform: scale(${ifProp('caught', '1', '1.1')});
+      }
+    }
+
+    ${S.RemoveButton} {
+      opacity: 1;
+      bottom: -20px;
+    }
+  }
+
+  ${S.Catch} {
+    display: ${ifProp('caught', 'none', 'block')};
+  }
+
+  ${S.RemoveButton} {
+    display: ${ifProp('caught', 'block', 'none')};
   }
 `
 
@@ -68,23 +124,12 @@ S.Photo = styled.img`
   display: block;
 `
 
-S.Catch = styled.img`
-  position: absolute;
-  width: 60px;
-  top: 0;
-  left: 0;
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
 S.Content = styled.div`
+  position: relative;
   margin-top: 30px;
 
   @media (min-width: ${theme('breakpoints.md')}) {
+    width: 360px;
     margin-top: 0;
     margin-left: 15px;
   }
@@ -213,6 +258,56 @@ S.CardPokemon = styled(CardPokemon)`
       margin-right: 0;
     }
   }
+`
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+S.AbilityCard = styled.div`
+  position: absolute;
+  padding: 15px;
+  background: ${palette('black')};
+  color: ${palette('white')};
+  border-radius: 10px;
+  margin: -60px 0 20px;
+  width: 100%;
+  animation: ${show} 0.5s ease;
+
+  h5 {
+    font-size: 1.6rem;
+    color: ${palette('white')};
+    margin: 0 0 5px;
+    text-transform: capitalize;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+`
+
+S.CloseAbility = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid ${palette('white')};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-weight: 700;
+  line-height: 0.2;
+  color: ${palette('white')};
+  cursor: pointer;
 `
 
 export default S

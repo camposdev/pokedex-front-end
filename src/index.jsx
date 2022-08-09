@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 import PokedexScreen from './screens/PokedexScreen'
 import PokemonScreen from './screens/PokemonScreen'
 import SearchScreen from './screens/SearchScreen'
+import TypePokemonsScreen from './screens/TypePokemonsScreen/TypePokemonsScreen'
 import store from './store/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -17,8 +18,9 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<SearchScreen />} />
-          <Route path="pokemon/:name" element={<PokemonScreen />} />
-          <Route path="pokedex" element={<PokedexScreen />} />
+          <Route path="/pokemon/:name" element={<PokemonScreen />} />
+          <Route path="/pokedex" element={<PokedexScreen />} />
+          <Route path="/type/:name" element={<TypePokemonsScreen />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -9,9 +9,17 @@ import Header from './components/Header/Header'
 import GlobalStyles from './styles/GlobalStyles'
 import theme from './styles/theme'
 import 'react-toastify/dist/ReactToastify.min.css'
-import SearchForm from './components/SearchForm/SearchForm'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { loadPokedex } from './store/pokedexSlice'
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadPokedex())
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
@@ -28,10 +36,6 @@ const App = () => {
 
       <Header />
 
-      <Container>
-        <SearchForm />
-      </Container>
-
       <S.Wrapper>
         <Container>
           <Outlet />
@@ -40,7 +44,7 @@ const App = () => {
 
       <Footer />
 
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" pauseOnHover={false} />
     </ThemeProvider>
   )
 }

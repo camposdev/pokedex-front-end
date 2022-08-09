@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { palette, prop, theme } from 'styled-tools'
+import styled, { css } from 'styled-components'
+import { ifProp, palette, prop, theme } from 'styled-tools'
 
 const S = {}
 
@@ -82,14 +82,54 @@ S.Catch = styled.img`
   }
 `
 
+S.RemoveButton = styled.button`
+  position: absolute;
+  z-index: 3;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 4px;
+  padding: 2px 15px;
+  background-color: ${palette('red')};
+  color: ${palette('white')};
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  opacity: 0;
+  cursor: pointer;
+`
+
 S.Wrapper = styled.div`
   position: relative;
 
   &:hover {
     ${S.Catch} {
       top: 5px;
-      opacity: 1;
+      opacity: ${ifProp('caught', '0.2', '1')};
+
+      ${ifProp(
+        'caught',
+        css`
+          z-index: 1;
+          cursor: default;
+          transform: scale(1);
+        `
+      )}
     }
+
+    ${S.RemoveButton} {
+      opacity: 1;
+      bottom: 20px;
+    }
+  }
+
+  ${S.RemoveButton} {
+    display: ${ifProp('caught', 'block', 'none')};
+  }
+
+  ${S.Catch} {
+    display: ${ifProp('caught', 'none', 'block')};
   }
 `
 
@@ -104,9 +144,12 @@ S.Name = styled.h3`
   text-align: center;
   font-weight: 400;
   text-transform: capitalize;
+  height: 3rem;
+  overflow: hidden;
 
   @media (min-width: ${theme('breakpoints.sm')}) {
     font-size: 2.4rem;
+    height: 3.6rem;
   }
 `
 
