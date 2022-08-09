@@ -8,9 +8,9 @@ import pokeball from '../../assets/images/pokeball.svg'
 import arrow from '../../assets/images/arrow.png'
 import S from './styles'
 import { catchPokemon, removePokemon } from '../../store/pokedexSlice'
+import { setLoading } from '../../store/loadingSlice'
 
 const PokemonScreen = () => {
-  const [loading, setLoading] = useState(true)
   const [pokemon, setPokemon] = useState(null)
   const [evolutions, setEvolutions] = useState([])
   const [ability, setAbility] = useState({
@@ -20,6 +20,7 @@ const PokemonScreen = () => {
   })
   const { name } = useParams()
   const pokedex = useSelector((state) => state.pokedex.pokemons)
+  const loading = useSelector((state) => state.loading.value)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -27,7 +28,7 @@ const PokemonScreen = () => {
 
   const fetchPokemon = async () => {
     try {
-      setLoading(true)
+      dispatch(setLoading(true))
       const fetchPokemon = await api.getPokemonByNameOrNumber(name)
       setPokemon(fetchPokemon.data)
       const fetchEvolution = await api.getEvolutionChainBySpecies(fetchPokemon.data.species.url)
@@ -35,7 +36,7 @@ const PokemonScreen = () => {
     } catch (error) {
       console.error(error)
     } finally {
-      setLoading(false)
+      dispatch(setLoading(false))
     }
   }
 

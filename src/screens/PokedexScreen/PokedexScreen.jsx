@@ -1,26 +1,28 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import S from './styles'
 import * as api from '../../api/api'
 import { toast } from 'react-toastify'
 import { CardPokemon, Loading, SearchForm, TitleSection } from '../../components'
+import { setLoading } from '../../store/loadingSlice'
 
 const PokedexScreen = () => {
-  const [loading, setLoading] = useState(false)
   const [pokemons, setPokemons] = useState([])
   const pokedex = useSelector((state) => state.pokedex.pokemons)
+  const loading = useSelector((state) => state.loading.value)
+  const dispatch = useDispatch()
   const count = pokedex?.length || 0
 
   const fetchPokemons = async () => {
     try {
-      setLoading(true)
+      dispatch(setLoading(true))
       const results = await api.getPokemonsFromPokedex(pokedex)
       setPokemons(results)
     } catch (error) {
       console.error(error)
       toast.error('Ops! Algo deu errado.')
     } finally {
-      setLoading(false)
+      dispatch(setLoading(false))
     }
   }
 
