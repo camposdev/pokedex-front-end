@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { palette, theme } from 'styled-tools'
 import Container from '../Container'
 
@@ -64,6 +64,7 @@ S.Logo = styled.img`
 
 S.Pokeball = styled.img`
   position: absolute;
+  z-index: 2;
   bottom: 0;
   left: 50%;
   margin-bottom: -38px;
@@ -80,6 +81,57 @@ S.Pokeball = styled.img`
     width: 82px;
     margin-bottom: -58px;
     margin-left: -40px;
+  }
+`
+
+const lightEffect = keyframes`
+  from {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+`
+
+S.EffectPokeball = styled.div`
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  margin-bottom: -38px;
+  margin-left: -25px;
+  width: 52px;
+  height: 52px;
+
+  @media (min-width: ${theme('breakpoints.sm')}) {
+    width: 82px;
+    height: 82px;
+    margin-bottom: -57px;
+    margin-left: -41px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: ${palette('red')};
+    border-radius: 50%;
+    animation: ${lightEffect} 1.5s ease 0s infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: ${palette('red')};
+    border-radius: 50%;
+    animation: ${lightEffect} 1.5s ease 0.5s infinite;
   }
 `
 

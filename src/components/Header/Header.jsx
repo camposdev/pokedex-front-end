@@ -32,6 +32,7 @@ const Header = () => {
           onClick={handleGetRandom}
           data-testid="pokeball"
         />
+        <S.EffectPokeball />
 
         <S.Pokedex onClick={() => navigate('pokedex')}>
           <S.PokedexIcon src={pokedexIcon} alt="Pokedex" />
