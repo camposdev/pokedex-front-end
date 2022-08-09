@@ -73,7 +73,7 @@ S.Pokeball = styled.img`
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(360deg);
   }
 
   @media (min-width: ${theme('breakpoints.sm')}) {
@@ -152,7 +152,13 @@ S.Pokedex = styled.a`
 
 S.Container = styled(Container)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+`
+
+S.Github = styled.img`
+  width: 40px;
+  height: auto;
 `
 
 export default S

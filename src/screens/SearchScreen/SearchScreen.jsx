@@ -1,34 +1,44 @@
-import { useRef, useState } from 'react'
-import CardPokemon from '../../components/CardPokemon/CardPokemon'
+import { useState, useEffect } from 'react'
+import CardPokemon from '../../components/CardPokemon'
 import S from './styles'
+import * as api from '../../api/api'
+import Loading from '../../components/Loading'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '../../store/loadingSlice'
 
 const SearchScreen = () => {
-  const [isFocused, setIsFocused] = useState(false)
-  const [search, setSearch] = useState('')
-  const inputRef = useRef(null)
+  const [, setNextPage] = useState('')
+  const [pokemons, setPokemons] = useState([])
+  const loading = useSelector((state) => state.loading.value)
+  const dispatch = useDispatch()
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    if (search.length < 3) return
-
-    setSearch('')
-    inputRef.current.blur()
+  const fetchPokemons = async () => {
+    try {
+      dispatch(setLoading(true))
+      const { next, results } = await api.getPokemons()
+      setNextPage(next)
+      setPokemons(results)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      dispatch(setLoading(false))
+    }
   }
+
+  useEffect(() => {
+    fetchPokemons()
+  }, [])
 
   return (
     <>
-      <S.Form focused={isFocused} onSubmit={handleSubmit}>
-        <S.Input
-          ref={inputRef}
-          placeholder="Buscar Pokémon"
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-        />
-      </S.Form>
-
-      <CardPokemon />
+      {!loading && (
+        <S.WrapCards>
+          {pokemons?.map((item) => (
+            <CardPokemon key={item.id} data={item} />
+          ))}
+        </S.WrapCards>
+      )}
+      {loading && <Loading data-testid="loading" />}
     </>
   )
 }

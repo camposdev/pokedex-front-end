@@ -44,10 +44,4 @@ S.Input = styled.input`
   }
 `
 
-S.WrapCards = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`
-
 export default S
