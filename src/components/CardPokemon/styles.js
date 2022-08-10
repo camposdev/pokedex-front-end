@@ -75,11 +75,15 @@ S.Catch = styled.img`
   top: 0px;
   left: 0;
   transition: all 0.3s ease;
-  opacity: 0;
+  opacity: 0.2;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media (min-width: ${theme('breakpoints.sm')}) {
+    opacity: 0;
   }
 `
 
@@ -103,7 +107,13 @@ S.Wrapper = styled.div`
 
     ${S.RemoveButton} {
       opacity: 1;
-      bottom: 20px;
+      bottom: 0px;
+    }
+
+    @media (min-width: ${theme('breakpoints.sm')}) {
+      ${S.RemoveButton} {
+        bottom: 20px;
+      }
     }
   }
 `

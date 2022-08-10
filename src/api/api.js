@@ -28,7 +28,8 @@ const getPokemonByUrl = async (url) => {
 }
 
 const getPokemonByNameOrNumber = async (value) => {
-  return await axios.get(`${baseURL}/pokemon/${value}`)
+  const pokemonNameId = String(value).toLowerCase()
+  return await axios.get(`${baseURL}/pokemon/${pokemonNameId}`)
 }
 
 const recursiveGetPokemons = async (chain, callback) => {
