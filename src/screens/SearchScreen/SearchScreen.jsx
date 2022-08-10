@@ -17,11 +17,7 @@ const SearchScreen = () => {
       dispatch(setLoading(true))
       const { next, results } = await api.getPokemons(url)
       setNextPage(next)
-      if (pokemons.length > 0) {
-        setPokemons([...pokemons, ...results])
-      } else {
-        setPokemons(results)
-      }
+      setPokemons(pokemons.length > 0 ? [...pokemons, ...results] : results)
     } catch (error) {
       console.error(error)
     } finally {
@@ -41,13 +37,13 @@ const SearchScreen = () => {
     <>
       <SearchForm />
 
-      {!loading && (
-        <S.FlexContainer>
-          {pokemons?.map((item) => (
-            <CardPokemon key={item.id} data={item} data-testid="card-pokemon" />
-          ))}
-        </S.FlexContainer>
-      )}
+      {loading && <Loading data-testid="loading" />}
+
+      <S.FlexContainer>
+        {pokemons?.map((item) => (
+          <CardPokemon key={item.id} data={item} data-testid="card-pokemon" />
+        ))}
+      </S.FlexContainer>
 
       {!loading && pokemons.length > 0 && nextPage && (
         <S.FlexContainer>
