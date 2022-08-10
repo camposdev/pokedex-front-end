@@ -44,7 +44,7 @@ const SearchScreen = () => {
       {!loading && (
         <S.FlexContainer>
           {pokemons?.map((item) => (
-            <CardPokemon key={item.id} data={item} />
+            <CardPokemon key={item.id} data={item} data-testid="card-pokemon" />
           ))}
         </S.FlexContainer>
       )}

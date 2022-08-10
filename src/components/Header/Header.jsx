@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <S.Header>
       <S.Container>
-        <a href="https://github.com/camposdev" target="_blank" rel="noreferrer">
+        <a href="https://github.com/camposdev/pokedex-front-end" target="_blank" rel="noreferrer">
           <S.Github src={github} alt="Github" />
         </a>
 
