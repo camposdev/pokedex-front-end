@@ -12,7 +12,7 @@ export const pokedexSlice = createSlice({
       if (state.pokemons?.includes(id)) return
       state.pokemons = state.pokemons ? [id, ...state.pokemons] : [id]
       localStorage.setItem('@pokedex', JSON.stringify(state.pokemons))
-      toast.success('Gotcha!')
+      toast.success('Pokémon capturado!')
     },
     loadPokedex: (state) => {
       const storedPokedex = localStorage.getItem('@pokedex')
